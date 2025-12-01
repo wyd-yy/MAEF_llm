@@ -26,8 +26,11 @@
     {
         "model_type": "goodrock_chat",
         "config_name": "kuafu3.5",
-        "model_name": "kuafu-max-v3.5",
+        "model_name": "kuafu-max-v3.7_in",
         "api_key": "",
-        "api_base=": "http://your_api_base_url"
+        "api_base=": "",
+        "generate_args": {
+            "temperature": 1.0
+        }
     }
 ]

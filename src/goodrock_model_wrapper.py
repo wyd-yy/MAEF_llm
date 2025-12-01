@@ -18,9 +18,9 @@ class GoodRockModelWrapper(ModelWrapperBase):
     def __init__(
         self,
         config_name: str,
-        model_name: str = "kuafu-max-v3.5",
-        api_key: str = "",
-        api_base: str = "http://localhost:8000",
+        model_name: str = "kuafu-max-v3.7_in",
+        api_key: str = "HSCzK0piYemccfZOZOl_ZbrD0SpDsWpKVn0ovutRTV4",
+        api_base: str = "http://kuafuapi.visbody.com",
         generate_args: dict = None,
         **kwargs: Any,
     ) -> None:
@@ -42,12 +42,13 @@ class GoodRockModelWrapper(ModelWrapperBase):
         super().__init__(config_name=config_name, model_name=model_name)
 
         self.api_key = api_key
+        self.model_name = model_name  # 添加这一行来定义 model_name
         self.api_base = api_base
         self.generate_args = generate_args or {}
         
 
         # Set the max length of Kuafu model
-        self.max_length = 4096  # This might need to be adjusted based on the specific model
+        self.max_length = 90000  # This might need to be adjusted based on the specific model
 
     def __call__(
         self,
@@ -148,13 +149,14 @@ class GoodRockModelWrapper(ModelWrapperBase):
         )
 
         # Update monitor
-        token_prompt = result["token_usage"]["input_tokens"]
-        token_response = result["token_usage"]["output_tokens"]
-        self.monitor.update_text_and_embedding_tokens(
-            model_name=self.model_name,
-            prompt_tokens=token_prompt,
-            completion_tokens=token_response,
-        )
+        # token_prompt = result["token_usage"]["input_tokens"]
+        # token_response = result["token_usage"]["output_tokens"]
+        # self.update_text_and_embedding_tokens(
+        #     model_name=self.model_name,
+        #     prompt_tokens=token_prompt,
+        #     completion_tokens=token_response,
+        # )
+
 
         # Process and return the response
         output_text = result["response"]["content"][0]["text"]
