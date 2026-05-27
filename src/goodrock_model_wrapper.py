@@ -18,9 +18,9 @@ class GoodRockModelWrapper(ModelWrapperBase):
     def __init__(
         self,
         config_name: str,
-        model_name: str = "kuafu-max-v3.7_in",
-        api_key: str = "HSCzK0piYemccfZOZOl_ZbrD0SpDsWpKVn0ovutRTV4",
-        api_base: str = "http://kuafuapi.visbody.com",
+        model_name: str = "",
+        api_key: str = "",
+        api_base: str = "",
         generate_args: dict = None,
         **kwargs: Any,
     ) -> None:
